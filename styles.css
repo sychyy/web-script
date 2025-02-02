@@ -1,0 +1,274 @@
+/* Reset and Basic Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('images/bgr.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    padding: 20px;
+    position: relative;
+    min-height: 100%;
+    overflow-x: hidden;
+    transition: all 0.3s ease-in-out; /* Smooth transition on all changes */
+}
+
+/* Add background blur */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    z-index: 1;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8); /* putih dengan sedikit transparansi */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Best Seller Badge */
+.best-seller {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ffcc00;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* Showcase Styling */
+.showcase {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    animation: slideUp 1s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.showcase:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.showcases {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.showcase img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.showcase h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #28a745;
+}
+
+.showcase p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.buttons button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+.buttons button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Loading animation */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    animation: fadeInLoading 1s forwards; /* Fade-in effect for the loading screen */
+}
+
+.loader {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid #28a745;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+/* Spin animation for loader */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fade-in effect for the loading screen */
+@keyframes fadeInLoading {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Click Effect: Subtle white shadow */
+.showcase:active {
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Smooth notification message */
+/* Smooth notification messages */
+/* Unified notification style */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-in-out;
+    opacity: 0;
+    transform: translateX(100%);
+    background-color: #ffc107; /* Yellow background for all notifications */
+    color: black; /* Text color */
+}
+
+/* Success notification */
+.notification.success {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Error notification */
+.notification.error {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Info notification */
+.notification.info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+/* Warning notification */
+.notification.warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* Slide in animation */
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Slide out animation */
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Bot Scripts for Sale</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer>
+        // Show notification with the specified message
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.classList.add('notification', type); // Add type class (success, error, info, warning)
+            notification.innerText = message;
+
+            // Append the notification to the body
+            document.body.appendChild(notification);
+
+            // Animate notification slide-in
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateX(0)';
+            }, 0);
+
+            // Remove notification after 3 seconds (with slide-out animation)
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.5s ease-in-out forwards';
+                setTimeout(() => {
+                    notification.remove();
+                }, 500); // Wait for the slide-out animation to finish before removing
+            }, 1500); // Notification stays for 3 seconds
+        }
+
+        // Example function for button with link
+        function handleButtonClick(buttonType) {
+            if (buttonType === 'link') {
+                // If there is a link, show green notification with subscribe message
+                showNotification('JANGAN LUPA SUBSCRIBE', 'success');
+            } else {
+                // For non-link buttons, show "in progress" message or another message
+                showNotification('SCRIPT MASIH DALAM UJI COBA', 'warning');
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>SCRIPT BOT WHATSAPP</h1>
+        <p>Bot WhatsApp JavaScript Yang Dibuat Oleh YudaDevz!</p>
+    </header>
+
+    <section class="showcases">
+        <div class="showcase">
+            <img src="images/shonhe.jpg" alt="SHONHE V3">
+            <h2>SHONHE V3</h2>
+            <p>Script Bot WhatsApp Hasil Kolaborasi YudzDev [SHO] & TngxCode [Nhe] Dengan Nama Bot SHONHEV3.</p>
+            <div class="buttons">
+                <button onclick="handleButtonClick('link'); window.location.href='https://wa.me/62882008702155?text=BELI%20SCRIPT%20BOT%20SHONHE%20V3%0A%0A-%2025K%20(5%20ORANG%20TERCEPAT)%2C%20UPDATE%2010K%20PER%20UPDATE%0A-%2045K%20FULL%20UPDATE';">Buy No Enc</button>
+                <button onclick="handleButtonClick('link'); window.location.href='https://github.com/sychyy/shonhev3';">Free Enc</button>
+            </div>
+        </div>
+
+        <div class="showcase">
+            <img src="images/nakano.jpg" alt="NAKANO V4">
+            <h2>NAKANO AI V4</h2>
+            <p>Script Bot WhatsApp V4 Yang Tidak Akan Di Sebar Free, Tapi V6 - V7 Akan Disebar Free Karena Tidak Mengandung BugMenu Lagi.</p>
+            <div class="buttons">
+                <button onclick="handleButtonClick('no-link')">Buy No Enc</button>
+                <button onclick="handleButtonClick('no-link')">Free Enc</button>
+            </div>
+        </div>
+
+        <div class="showcase">
+            <img src="images/undefined.png" alt="NOT KNOWS">
+            <h2>NOT KNOWS?</h2>
+            <p>Get your WhatsApp bots running quickly with this easy-to-use script that requires no prior setup.</p>
+            <div class="buttons">
+                <button onclick="handleButtonClick('no-link')">Buy No Enc</button>
+                <button onclick="handleButtonClick('no-link')">Free Enc</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
