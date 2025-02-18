@@ -1,85 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Bot Script</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer>
-        // Show notification with the specified message
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.classList.add('notification', type); // Add type class (success, error, info, warning)
-            notification.innerText = message;
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>REST API - SYCZE</title>
+    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Favicon -->
+<link rel="icon" href="image/icon.jpg" type="image/png">
 
-            // Append the notification to the body
-            document.body.appendChild(notification);
+<!-- Open Graph Meta Tags (Agar muncul saat link dibagikan di WhatsApp, Facebook, dll.) -->
+<meta property="og:title" content="REST API - SYCZE">
+<meta property="og:description" content="Kumpulan REST API dari SYCZE yang bisa kamu gunakan!">
+<meta property="og:image" content="https://rest-api.sycze.my.id/image/icon.png">
+<meta property="og:url" content="https://rest-api.sycze.my.id">
+<meta property="og:type" content="website">
 
-            // Animate notification slide-in
-            setTimeout(() => {
-                notification.style.opacity = '1';
-                notification.style.transform = 'translateX(0)';
-            }, 0);
-
-            // Remove notification after 3 seconds (with slide-out animation)
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.5s ease-in-out forwards';
-                setTimeout(() => {
-                    notification.remove();
-                }, 500); // Wait for the slide-out animation to finish before removing
-            }, 1500); // Notification stays for 3 seconds
-        }
-
-        // Example function for button with link
-        function handleButtonClick(buttonType) {
-            if (buttonType === 'link') {
-                // If there is a link, show green notification with subscribe message
-                showNotification('JANGAN LUPA SUBSCRIBE', 'success');
-            } else {
-                // For non-link buttons, show "in progress" message or another message
-                showNotification('SCRIPT MASIH DALAM UJI COBA', 'warning');
-            }
-        }
-    </script>
+<!-- Twitter Card (Untuk tampilan lebih bagus di Twitter/X) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="REST API - SYCZE">
+<meta name="twitter:description" content="Kumpulan REST API dari SYCZE yang bisa kamu gunakan!">
+<meta name="twitter:image" content="https://rest-api.sycze.my.id/image/icon.jpg">
 </head>
+<script>
+function toggleMenu(menuId) {
+    var menu = document.getElementById(menuId);
+    
+    if (menu.classList.contains("show")) {
+        menu.style.opacity = "0";
+        menu.style.transform = "translateY(-10px)";
+        setTimeout(() => {
+            menu.classList.remove("show");
+            menu.style.display = "none";
+        }, 300);
+    } else {
+        menu.style.display = "block";
+        setTimeout(() => {
+            menu.classList.add("show");
+            menu.style.opacity = "1";
+            menu.style.transform = "translateY(0)";
+        }, 10);
+    }
+}
+</script>
 <body>
-    <header>
-        <h1>SCRIPT BOT WHATSAPP</h1>
-        <p>Bot WhatsApp JavaScript Yang Dibuat Oleh YudaDevz!</p>
-    </header>
+  <div id="musicPopup" class="music-popup">
+    <span>PUTAR LAGU SEKARANG!</span>
+    <button onclick="playMusic()">PLAY</button>
+</div>
+    <div class="top-bar">
+    <div class="date-time">
+        <span id="current-date"></span> | <span id="current-time"></span>
+    </div>
+    <img src="https://files.catbox.moe/7o0wuc.jpg" alt="Profile Icon" class="profile-icon">
+</div>
+    <div class="container">
+        <header>
+            <h1>REST API - SYCZE</h1>
+        </header>
 
-    <section class="showcases">
-        <div class="showcase showcase1">
-            <img src="images/shonhe.jpg" alt="SHONHE V3">
-            <h2>SHONHE V3</h2>
-            <p>Script Bot WhatsApp Hasil Kolaborasi YudzDev [SHO] & TngxCode [Nhe] Dengan Nama Bot SHONHEV3.</p>
-            <div class="buttons">
-                <button onclick="handleButtonClick('link'); window.location.href='https://wa.me/62882008702155?text=BELI%20SCRIPT%20BOT%20SHONHE%20V3%0A%0A-%2025K%20(5%20ORANG%20TERCEPAT)%2C%20UPDATE%2010K%20PER%20UPDATE%0A-%2045K%20FULL%20UPDATE';">Buy No Enc</button>
-                <button onclick="handleButtonClick('link'); window.location.href='https://github.com/sychyy/shonhev3';">Free Enc</button>
-            </div>
-        </div>
+        <nav>
+            <ul>
+                <li class="menu-title">🏠 NAVIGASI UTAMA</li>
+        <li><a href="https://github.com/sychyy"><i class="fa fa-briefcase"></i> PROJECTS</a></li>  
+        <li><a href="https://wa.me/62882008702155"><i class="fa fa-shopping-cart"></i> BUY PANEL</a></li>  
+        <li><a href="https://sycze.my.id"><i class="fa fa-globe"></i> MY WEB</a></li>   
+        <li><a href="https://script.sycze.my.id"><i class="fa fa-code"></i> SCRIPT BOT</a></li>  
+        <li><a href="https://mannoffc-x.hf.space/endpoint"><i class="fa fa-key"></i> MANNR API</a></li>  
+        <li><a href="https://api.agatz.xyz/"><i class="fa fa-chart-line"></i> AGATZ API</a></li>  
+        <li><a href="https://api.siputzx.my.id/documentation"><i class="fa fa-book"></i> SIPUTZX API</a></li>  
+        <hr>
 
-        <div class="showcase showcase2">
-            <div class="not-found">Not Free</div>
-            <img src="images/nakano.jpg" alt="NAKANO V4">
-            <h2>NAKANO AI V4</h2>
-            <p>Script Bot WhatsApp V4 Yang Tidak Akan Di Sebar Free, Tapi V6 - V7 Akan Disebar Free Karena Tidak Mengandung BugMenu Lagi.</p>
-            <div class="buttons">
-                <button onclick="handleButtonClick('link'); window.location.href='https://wa.me/62882008702155?text=BELI%20SCRIPT%20NAKANO%20NO%20ENC%20%20HARGA%2060K%20FREE%20PANEL%20UNLI';">Buy No Enc</button>
-                <button onclick="handleButtonClick('link'); window.location.href='https://wa.me/62882008702155?text=BELI%20SCRIPT%20NAKANO%20ENC%20HARGA%2015K';">Buy No Enc</button>
-            </div>
-        </div>
+        <!-- 🎥 Downloader -->
+<li class="menu-title" onclick="toggleMenu('downloader-menu')">🎥 DOWNLOADER</li>
+<ul id="downloader-menu" class="hidden-menu">
+    <li><a href="https://api.sycze.my.id/tiktok?url="><i class="fa fa-music"></i> TIKTOK DOWNLOAD</a></li>  
+    <li><a href="https://api.sycze.my.id/igdl?url="><i class="fa-brands fa-instagram"></i> IG DOWNLOAD</a></li>  
+    <li><a href="https://api.sycze.my.id/instagram?url="><i class="fa-brands fa-instagram"></i> IG2 DOWNLOAD</a></li>  
+    <li><a href="https://api.sycze.my.id/ytmp3?url="><i class="fa fa-music"></i> YOUTUBE MP3</a></li>  
+    <li><a href="https://api.sycze.my.id/pinsearch?message=totoro"><i class="fa fa-camera-retro"></i> PINT SEARCH</a></li>
+    <li><a href="https://api.sycze.my.id/pintdl?url=https://pin.it/5Ovtonjyj"><i class="fa fa-camera-retro"></i> PINT DOWNLOAD</a></li>
+    <li><a href="https://api.sycze.my.id/ytmp4?url="><i class="fa fa-video-camera"></i> YOUTUBE MP4</a></li>  
+    <li><a href="https://api.sycze.my.id/spotifydl?url="><i class="fab fa-spotify"></i> SPOTIFY DOWNLOAD</a></li>  
+    <li><a href="https://api.sycze.my.id/spotifysearch?s=sparkle"><i class="fa fa-search"></i> SPOTIFY SEARCH</a></li>  
+</ul>
 
-        <div class="showcase showcase3">
-            <div class="not-found">Not Found</div>
-            <img src="images/undefined.png" alt="NOT KNOWS">
-            <h2>NOT KNOWS?</h2>
-            <p>Get your WhatsApp bots running quickly with this easy-to-use script that requires no prior setup.</p>
-            <div class="buttons">
-                <button onclick="handleButtonClick('no-link')">Buy No Enc</button>
-                <button onclick="handleButtonClick('no-link')">Free Enc</button>
-            </div>
-        </div>
-    </section>
+        <!-- 🎮 GAME -->
+<li class="menu-title" onclick="toggleMenu('game-menu')">🎮 GAME</li>
+<ul id="game-menu" class="hidden-menu">
+<li><a href="https://api.sycze.my.id/game/asahotak"><i class="fa fa-brain"></i> Asah Otak</a></li>
+<li><a href="https://api.sycze.my.id/game/caklontong"><i class="fa fa-comments"></i> Cak Lontong</a></li>
+<li><a href="https://api.sycze.my.id/game/family100"><i class="fa fa-users"></i> Family 100</a></li>
+<li><a href="https://api.sycze.my.id/game/lengkapikalimat"><i class="fa fa-pencil"></i> Lengkapi Kalimat</a></li>
+<li><a href="https://api.sycze.my.id/game/susunkata"><i class="fa fa-align-left"></i> Susun Kata</a></li>
+<li><a href="https://api.sycze.my.id/game/tebaktebakan"><i class="fa fa-question-circle"></i> Tebak Tebakan</a></li>
+<li><a href="https://api.sycze.my.id/game/tebakbendera"><i class="fa fa-flag"></i> Tebak Bendera</a></li>
+<li><a href="https://api.sycze.my.id/game/tebakgambar"><i class="fa fa-image"></i> Tebak Gambar</a></li>
+<li><a href="https://api.sycze.my.id/game/tebaklogo"><i class="fa fa-briefcase"></i> Tebak Logo</a></li>
+<li><a href="https://api.sycze.my.id/game/tebakgame"><i class="fa fa-gamepad"></i> Tebak Game</a></li>
+<li><a href="https://api.sycze.my.id/game/tebakhewan"><i class="fa fa-paw"></i> Tebak Hewan</a></li>
+<li><a href="https://api.sycze.my.id/game/tebakjkt"><i class="fa fa-building"></i> Tebak Jakarta</a></li>
+<li><a href="https://api.sycze.my.id/game/kabupaten"><i class="fa fa-map"></i> Kabupaten</a></li>
+<li><a href="https://api.sycze.my.id/game/tebakkalimat"><i class="fa fa-book"></i> Tebak Kalimat</a></li>
+<li><a href="https://api.sycze.my.id/game/karakter-freefire"><i class="fa fa-fire"></i> Karakter Free Fire</a></li>
+<li><a href="https://api.sycze.my.id/game/tebakkata"><i class="fa fa-font"></i> Tebak Kata</a></li>
+<li><a href="https://api.sycze.my.id/game/tebakkimia"><i class="fa fa-flask"></i> Tebak Kimia</a></li>
+<li><a href="https://api.sycze.my.id/game/tebaklagu"><i class="fa fa-music"></i> Tebak Lagu</a></li>
+<li><a href="https://api.sycze.my.id/game/tebaklirik"><i class="fa fa-microphone"></i> Tebak Lirik</a></li>
+<li><a href="https://api.sycze.my.id/game/siapakahaku"><i class="fa fa-user-circle"></i> Siapakah Aku?</a></li>
+<li><a href="https://api.sycze.my.id/game/surah"><i class="fa fa-book"></i> Tebak Surah</a></li>
+<li><a href="https://api.sycze.my.id/game/tebakwarna"><i class="fa fa-paint-brush"></i> Tebak Warna</a></li>
+<li><a href="https://api.sycze.my.id/game/tekateki"><i class="fa fa-puzzle-piece"></i> Teka-Teki</a></li>
+</ul>
+
+<!-- 🤖 Generator & AI -->
+<li class="menu-title" onclick="toggleMenu('generate-ai-menu')">🤖 GENERATOR & AI</li>
+<ul id="generate-ai-menu" class="hidden-menu">
+    <li><a href="https://api.sycze.my.id/fluxai?prompt="><i class="fa fa-image"></i> FLUX IMAGE</a></li>  
+    <li><a href="https://api.sycze.my.id/remini?url="><i class="fa fa-image"></i> REMINI IMAGE</a></li>
+    <li><a href="https://api.sycze.my.id/openai-prompt?prompt=&msg="><i class="fa fa-magic"></i> OPENAI PROMPT</a></li>  
+    <li><a href="https://api.sycze.my.id/gpt-3-5-turbo?text="><i class="fa fa-robot"></i> GPT-3.5 TURBO</a></li>  
+    <li><a href="https://brat.sycze.my.id/generate/?query=follow%20instagram%20sycze"><i class="fa fa-magic"></i> BRAT GENERATOR</a></li>  
+    <li><a href="https://api.sycze.my.id/bratgif/?text=follow%20instagram%20sycze"><i class="fa fa-magic"></i> BRATGIF GENERATOR</a></li>  
+    <li><a href="https://welcome.sycze.my.id/welcome?background=&text1=&text2=&text3=&avatar="><i class="fa fa-paint-brush"></i> WELCOME CANVAS</a></li>  
+    <li><a href="https://api.sycze.my.id/levelcanvas?fromLevel=0&toLevel=1&name=yudzDev"><i class="fa fa-level-up-alt"></i> LEVEL CANVAS</a></li>  
+    <li><a href="https://api.sycze.my.id/profilecanvas?rankName=epik&rankId=0&requireExp=0&level=0&name=YudzDev&exp=100"><i class="fa fa-star"></i> PROFIL CANVAS</a></li>  
+    <li><a href="https://api.sycze.my.id/yotsuba?q=halo+apakabar"><i class="fa fa-robot"></i> Yotsuba AI</a></li>  
+</ul>
+        
+
+        <!-- 🖼 Meme & Image API -->
+        <li class="menu-title" onclick="toggleMenu('image-menu')">🖼 MEME & IMAGE</li>
+        <ul id="image-menu" class="hidden-menu">
+        <li><a href="https://api.sycze.my.id/sadcat?text=ga+subscribe+sycze"><i class="fa fa-cat"></i> SADCAT</a></li>  
+        <li><a href="https://api.sycze.my.id/pornhub?text1=yudz&text2=dev"><i class="fa fa-film"></i> PORNHUB TEXT</a></li>  
+        <li><a href="https://api.sycze.my.id/ad?image=https://files.catbox.moe/7o0wuc.jpg"><i class="fa fa-newspaper"></i> AD</a></li>  
+        <li><a href="https://api.sycze.my.id/nokia?image=https://files.catbox.moe/7o0wuc.jpg"><i class="fa fa-mobile"></i> NOKIA</a></li>  
+        <li><a href="https://api.sycze.my.id/oogway?text=use+https://sycze.my.id"><i class="fa fa-leaf"></i> OOGWAY</a></li>  
+        <li><a href="https://api.sycze.my.id/pooh?text1=ketika+gw+ga+subscribe+sycze&text2=ketika+udah+subscribe+sycze"><i class="fa fa-face-grin-tongue"></i> POOH MEME</a></li>  
+        <li><a href="https://api.sycze.my.id/unforgivable?text=Sycze+Api+So+Trash"><i class="fa fa-ban"></i> UNFORGIVABLE</a></li>  
+        <li><a href="https://api.sycze.my.id/wanted?image=https://i.ibb.co.com/0R7Cc9FZ/image.jpg"><i class="fa fa-user-secret"></i> WANTED</a></li>  
+        <li><a href="https://api.sycze.my.id/communism?image=https://files.catbox.moe/7o0wuc.jpg"><i class="fa fa-flag"></i> COMMUNISM</a></li>  
+        <li><a href="https://api.sycze.my.id/jail?image=https://files.catbox.moe/7o0wuc.jpg"><i class="fa fa-lock"></i> Jail</a></li>  
+        </ul>
+
+        <!-- 🎈 Anime API -->
+        <li class="menu-title" onclick="toggleMenu('anime-menu')">🎈 ANIME NSFW</li>
+        <ul id="anime-menu" class="hidden-menu">
+        <li><a href="https://api.sycze.my.id/waifu">WAIFU</a></li>
+        <li><a href="https://api.sycze.my.id/neko">NEKO</a></li>
+        <li><a href="https://api.sycze.my.id/shinobu">SHINOBU</a></li>
+        <li><a href="https://api.sycze.my.id/megumin">MEGUMIN</a></li>
+        <li><a href="https://api.sycze.my.id/bully">BULLY</a></li>
+        <li><a href="https://api.sycze.my.id/cuddle">CUDDLE</a></li>
+        <li><a href="https://api.sycze.my.id/cry">CRY</a></li>
+        <li><a href="https://api.sycze.my.id/hug">HUG</a></li>
+        <li><a href="https://api.sycze.my.id/awoo">AWOO</a></li>
+        <li><a href="https://api.sycze.my.id/kiss">KISS</a></li>
+        <li><a href="https://api.sycze.my.id/lick">LICK</a></li>
+        <li><a href="https://api.sycze.my.id/pat">PAT</a></li>
+        <li><a href="https://api.sycze.my.id/smug">SMUG</a></li>
+        <li><a href="https://api.sycze.my.id/bonk">BONK</a></li>
+        <li><a href="https://api.sycze.my.id/dance">DANCE</a></li>
+        <li><a href="https://api.sycze.my.id/cringe">CRINGE</a></li>
+        </ul>
+        
+        <li class="menu-title" onclick="toggleMenu('nsfw-menu')">🔞 NSFW</li>
+        <ul id="nsfw-menu" class="hidden-menu">
+        <li><a href="https://api.sycze.my.id/nsfw/waifu">WAIFU</a></li>
+        <li><a href="https://api.sycze.my.id/nsfw/neko">NEKO</a></li>
+        <li><a href="https://api.sycze.my.id/nsfw/blowjob">BLOWJOB</a></li>
+        <li><a href="https://api.sycze.my.id/nsfw/trap">TRAP</a></li>
+        <li><a href="https://api.sycze.my.id/xnxx?message=sister">XNXX SEARCH</a></li>
+        <li><a href="https://api.sycze.my.id/xnxxdown?url=">XNXX DOWNLOAD</a></li>
+        <li><a href="https://api.sycze.my.id/xvideo?message=sister">XVIDEO SEARCH</a></li>
+        <li><a href="https://api.sycze.my.id/xvideodown?url=">XVIDEO DOWNLOAD</a></li>
+        </ul>
+        
+        <!-- 📁 Layanan Ekstra -->
+        <li class="menu-title" onclick="toggleMenu('ekstra-menu')">📁 LAYANAN EKSTRA</li>
+        <ul id="ekstra-menu" class="hidden-menu">
+        <li><a href="https://api.sycze.my.id/imdb?q=spirited+away"><i class="fa fa-film"></i> IMDB</a></li>
+        <li><a href="https://brat.sycze.my.id/ssweb/?link=https://sycze.my.id"><i class="fa fa-globe"></i> SSWEB</a></li>
+        <li><a href="https://api.sycze.my.id/weather?q=selogiri"><i class="fa fa-cloud"></i> WEATHER</a></li>
+        <li><a href="https://api.sycze.my.id/lirik?message=sparkle%20radwimps"><i class="fa fa-microphone"></i> LIRIK</a></li>
+        <hr>
+    </ul>  
+        </nav>
+    </div>
+    <footer class="footer light">
+  <div class="copyright">
+    <span>Copyright © 2025 - 2026</span>
+    <a href="https://www.youtube.com/@sycze" target="_blank" class="yudzdev-link">YudzDev</a>
+  </div>
+</footer>
+  <script>
+      // Tampilkan popup setelah 5 detik
+setTimeout(() => {
+    let popup = document.getElementById("musicPopup");
+    popup.style.display = "flex";
+    setTimeout(() => {
+        popup.style.opacity = "1";
+        popup.style.transform = "translate(-50%, 0)";
+    }, 100);
+
+    // Auto-hide popup setelah 15 detik jika user tidak klik tombol
+    setTimeout(() => {
+        if (popup.style.opacity === "1") { // Pastikan popup masih ada
+            popup.style.opacity = "0";
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 500);
+        }
+    }, 5000);
+}, 2000);
+
+// Fungsi untuk memainkan musik & hilangkan popup
+function playMusic() {
+    let audio = new Audio("sound/song.mp3");
+    audio.play();
+    let popup = document.getElementById("musicPopup");
+    popup.style.opacity = "0";
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 500);
+}
+  function updateDateTime() {
+    const now = new Date();
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    document.getElementById("current-date").textContent = now.toLocaleDateString('id-ID', options);
+    document.getElementById("current-time").textContent = now.toLocaleTimeString('id-ID');
+}
+setInterval(updateDateTime, 1000);
+updateDateTime();
+  </script>
 </body>
-</html>
+          </html>
